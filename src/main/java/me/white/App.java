@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class App 
 {
     public static void main( String[] args ) {
-        Class<Book> bookClass = Book.class;
+        /*Class<Book> bookClass = Book.class;
         final Book book = new Book();
         Arrays.stream(bookClass.getDeclaredFields()).forEach(f -> {
             try {
@@ -18,6 +18,16 @@ public class App
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
+        });*/
+
+        Arrays.stream(Book.class.getDeclaredFields()).forEach(f -> {
+            Arrays.stream(f.getAnnotations()).forEach(a -> {
+                if (a instanceof MyAnnotation) {
+                    MyAnnotation myAnnotation = (MyAnnotation) a;
+                    System.out.println(myAnnotation.value());
+                    System.out.println(myAnnotation.number());
+                }
+            });
         });
     }
 }

@@ -1,11 +1,13 @@
 package me.white;
 
+@MyAnnotation
 public class Book {
 
     private String a = "a";
 
     private static String B = "BOOK";
 
+    @MyAnnotation
     private static final String C = "BOOK";
 
     public String d = "d";
